@@ -1,7 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import "./css/app.css";
 import SearchButton from "./SearchButton";
+import Navbar from "./Navbar";
 
 function App() {
   const [movies, setMovies] = useState("");
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <div>
         <SearchButton
           search={search}
@@ -37,7 +40,7 @@ function App() {
           setLoading={setLoading}
         />
       </div>
-      <div>
+      <div className="container grid movie-card">
         {loading == "true"
           ? "Loading"
           : movies?.map((movie) => {

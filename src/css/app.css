@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: 0.2rem;
+  line-height: 4rem;
+}
+
+body {
+  background-color: #333;
+}
+
+.grid {
+  display: grid;
+  justify-content: center;
+}
+
+nav {
+  background-color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  text-align: center;
+  margin: 0 auto;
+  height: 200px;
+}
+.container .searchForm .searchInput {
+  color: rgb(212, 160, 45);
+  font-size: 1.5rem;
+  width: 80%;
+  height: 1rem;
+  border: none;
+  background-color: rgb(46, 46, 46);
+  border-radius: 2rem;
+  padding: 1.7rem;
+  outline: none;
+  box-shadow: rgb(0, 0, 0) 1px 1px;
+}
+
+.movie-card {
+  width: auto;
+  grid-template-columns: repeat(3, 1fr);
+  -moz-column-gap: 96px;
+       column-gap: 96px;
+  row-gap: 48px;
+}
+.movie-card img {
+  width: 100%;
+}
+.movie-card .movie-infos {
+  grid-template-rows: repeat(3, 100px);
+  align-items: center;
+  height: 300px;
+}/*# sourceMappingURL=app.css.map */

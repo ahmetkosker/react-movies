@@ -11,16 +11,24 @@ export default function Movie({ data, loading, setLoading }) {
   return loading == "true" ? (
     "Loading"
   ) : (
-    <>
-      <img
-        src={movie.image ? movie.image : "Loading"}
-        alt="There is not a photo."
-        width={400}
-        height={400}
-      />
-      <h1>Movie : {movie.title}</h1>
-      <h3>IMDB : {movie.vote}</h3>
-      <h3>Release Date : {movie.releaseYear}</h3>
-    </>
+    <div>
+      <div className="movieImg">
+        <img
+          src={movie.image ? movie.image : "Loading"}
+          alt="There is not a photo."
+        />
+      </div>
+      <div className="movie-infos grid">
+        <div>
+          <h2>Movie : {movie.title}</h2>
+        </div>
+        <div>
+          <h4>IMDB : {movie.vote}</h4>
+        </div>
+        <div>
+          <h4>Release Date : {movie.releaseYear}</h4>
+        </div>
+      </div>
+    </div>
   );
 }

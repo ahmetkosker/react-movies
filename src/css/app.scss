@@ -1,0 +1,59 @@
+$warning-color: rgb(212, 160, 45);
+$nico-color: #333;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: 0.2rem;
+  line-height: 4rem;
+}
+
+body {
+  background-color: $nico-color;
+}
+
+.grid {
+  display: grid;
+  justify-content: center;
+}
+
+nav {
+  background-color: $nico-color;
+}
+
+.container {
+  max-width: 1200px;
+  text-align: center;
+  margin: 0 auto;
+  height: 200px;
+  .searchForm {
+    .searchInput {
+      color: $warning-color;
+      font-size: 1.5rem;
+      width: 80%;
+      height: 1rem;
+      border: none;
+      background-color: rgb(46, 46, 46);
+      border-radius: 2rem;
+      padding: 1.7rem;
+      outline: none;
+      box-shadow: rgb(0, 0, 0) 1px 1px;
+    }
+  }
+}
+
+.movie-card {
+  width: auto;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 96px;
+  row-gap: 48px;
+  img {
+    width: 100%;
+  }
+  .movie-infos {
+    grid-template-rows: repeat(3, 100px);
+    align-items: center;
+    height: 300px;
+  }
+}
