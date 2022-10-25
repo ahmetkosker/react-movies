@@ -2,25 +2,55 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
   line-height: 4rem;
 }
 
 body {
-  background-color: #333;
+  background: linear-gradient(90deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+.trev-color {
+  color: #c5c5c5;
 }
 
 .grid {
   display: grid;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
-nav {
-  background-color: #333;
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ligbol {
+  font-size: 600;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.align-start {
+  align-self: start;
+}
+
+.justfy-start {
+  justify-self: start;
+}
+
+.justfy-end {
+  justify-self: end;
+}
+
+.grid-row {
+  grid-row: 2/span 3;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   text-align: center;
   margin: 0 auto;
   height: 200px;
@@ -38,18 +68,38 @@ nav {
   box-shadow: rgb(0, 0, 0) 1px 1px;
 }
 
+.movie {
+  line-height: 0;
+}
+
 .movie-card {
-  width: auto;
-  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
   -moz-column-gap: 96px;
        column-gap: 96px;
   row-gap: 48px;
 }
 .movie-card img {
-  width: 100%;
+  width: 300px;
+  height: auto;
+  line-height: 0;
+  border-radius: 24px 24px 0 0;
 }
 .movie-card .movie-infos {
-  grid-template-rows: repeat(3, 100px);
+  width: 300px;
+  position: relative;
+  top: -20px;
+  grid-template-rows: repeat(3, 1fr);
   align-items: center;
-  height: 300px;
+  height: auto;
+  min-height: 150px;
+  border-radius: 0 0 24px 24px;
+  background-color: rgb(58, 57, 57);
+  padding: 0 1rem;
+}
+.movie-card .movie-infos * {
+  line-height: 2rem;
+}
+.movie-card .movie-infos .movie-title {
+  color: rgb(243, 218, 164);
 }/*# sourceMappingURL=app.css.map */

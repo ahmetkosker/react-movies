@@ -1,0 +1,50 @@
+$warning-color: rgb(212, 160, 45);
+$nico-color: #333;
+$white-color: #ffffff;
+$trev-color: #c5c5c5;
+$movie-name-color: rgb(243, 218, 164);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: 0.1rem;
+  line-height: 4rem;
+}
+
+body {
+  background: linear-gradient(90deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+.trev-color {
+  color: $trev-color;
+}
+
+.grid {
+  display: grid;
+  flex-wrap: wrap;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  width: 100%;
+}
+
+.container {
+  max-width: 1024px;
+  img {
+    width: 100%;
+    height: 800px;
+  }
+}
+
+.slider {
+  .sliderItem {
+    display: none;
+  }
+}

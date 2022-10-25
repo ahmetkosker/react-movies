@@ -1,4 +1,4 @@
-import { React, memo } from "react";
+import { React, memo, useEffect } from "react";
 
 const SearchButton = ({ search, onChange, setLoading }) => {
   return (
