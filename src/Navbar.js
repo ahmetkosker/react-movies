@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react";
+import { memo } from "react";
 
 const Navbar = () => {
   return (
@@ -7,11 +7,7 @@ const Navbar = () => {
         <div className="grid">
           <div className="categories">
             <div>
-              <img
-                src={require("./images/download-background-logo-25.png")}
-                width="400"
-                height="200"
-              />
+              <h1>MOVIE LAND</h1>
             </div>
             <div></div>
           </div>

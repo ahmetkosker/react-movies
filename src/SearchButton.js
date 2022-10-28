@@ -1,14 +1,16 @@
 import { React, memo, useEffect } from "react";
+import { MainContext, useContext } from "./context";
 
-const SearchButton = ({ search, onChange, setLoading }) => {
+const SearchButton = () => {
+  const { search, setSearch } = useContext(MainContext);
   return (
     <div className="container">
-      <form className="searchForm">
+      <form className="searchForm" readOnly>
         <input
           type="text"
           placeholder="Search..."
           value={search}
-          onChange={onChange}
+          onChange={(e) => setSearch(e.target.value)}
           className="searchInput"
         />
       </form>
