@@ -2,27 +2,11 @@ import "./css/app.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { endPoint } from "./endPoint";
-import image from "./images/download-background-logo-25.png";
-import { clear } from "@testing-library/user-event/dist/clear";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export function Slider() {
   const [datas, setDatas] = useState([{}]);
-  const [scaleRatio, setScaleRatio] = useState(1);
-
-  const scaleRatioControl = () => {
-    setScaleRatio(scaleRatio + 1);
-    console.log(scaleRatio);
-  };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      scaleRatioControl();
-    }, 5000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   const getData = () => {
     axios
@@ -43,14 +27,24 @@ export function Slider() {
       </div>
       <div className="slider container">
         <div className="sliderItems grid">
-          {datas.map((data, index) => {
-            const ratio = scaleRatio / index;
-            return (
-              <div className="sliderItem" key={index}>
-                <img src={`${endPoint.imageTMDB}${data.poster_path}`}></img>
-              </div>
-            );
-          })}
+          {datas.length === 1 ? (
+            <Skeleton
+              enableAnimation="true"
+              count={6}
+              inline="true"
+              highlightColor="#ffffff"
+              width={300}
+              height={500}
+            />
+          ) : (
+            datas.map((data, index) => {
+              return (
+                <div className="sliderItem" key={index}>
+                  <img src={`${endPoint.imageTMDB}${data.poster_path}`}></img>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

@@ -1,35 +1,27 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { endPoint } from "./endPoint";
-import Movie from "./Movie";
+import TvSeries from "./TvSeries";
 import "./css/app.css";
 import SearchButton from "./SearchButton";
 import Navbar from "./Navbar";
 import { MainContext } from "./context";
-function AllMovies() {
-  const [movies, setMovies] = useState("");
-  const [loading, setLoading] = useState("true");
+import observer from "./observer";
+function AllTvSeries() {
+  const [tvSeries, setTvSeries] = useState([{}]);
+  const [loading, setLoading] = useState("false");
   const [search, setSearch] = useState("");
   const [scrollY, setScrollY] = useState(window.screenY);
-  const [length, setLength] = useState(0);
-
-  const loadMore = useRef();
+  const [tvSeriesLength, setTvSeriesLength] = useState(0);
   const onChange = (e) => setSearch(e.target.value);
   const data = {
     search,
     setSearch,
     loading,
-    movies,
-    length,
+    tvSeries,
+    tvSeriesLength,
+    setTvSeries,
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", function () {
-      window.scrollY > loadMore.current?.offsetTop
-        ? console.log(window.scrollY - loadMore.current?.offsetTop)
-        : console.log();
-    });
-  }, [scrollY]);
 
   useEffect(() => {
     axios
@@ -37,12 +29,12 @@ function AllMovies() {
         method: "GET",
         url:
           search.length > 0
-            ? `${endPoint.movies}&language=en-US&page=1&query=${search}`
-            : `${endPoint.popularMovies}&language=en-US&page=1`,
+            ? `${endPoint.tvSeries}&language=en-US&page=1&query=${search}`
+            : `${endPoint.popularTvSeries}&language=en-US&page=1`,
       })
       .then(function (response) {
-        setMovies(response.data.results);
-        setLength(response.data.results.length);
+        setTvSeries(response.data.results);
+        setTvSeriesLength(response.data.results.length);
         setLoading("false");
       })
       .catch(function (error) {
@@ -58,18 +50,14 @@ function AllMovies() {
           <SearchButton />
         </div>
         <div>
-          {loading == "true" ? (
-            "Loading"
-          ) : (
-            <Movie
-              imageClassName={"container grid movie-card"}
-              infosClassName={"movie-infos grid"}
-            />
-          )}
+          <TvSeries
+            imageClassName={"container grid movie-card"}
+            infosClassName={"movie-infos grid"}
+          />
         </div>
       </div>
     </MainContext.Provider>
   );
 }
 
-export default AllMovies;
+export default AllTvSeries;
