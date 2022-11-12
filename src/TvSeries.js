@@ -3,7 +3,6 @@ import axios from "axios";
 import image from "../src/images/no-image.jpg";
 import { endPoint } from "./endPoint";
 import { MainContext, useContext } from "./context";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function TvSeries({
@@ -11,29 +10,28 @@ export default function TvSeries({
   imageClassName,
   infosClassName,
   after,
+  who,
 }) {
   const { tvSeries, search, tvSeriesLength, setTvSeries } =
     useContext(MainContext);
   const [length, setTvSeriesLength] = useState(tvSeriesLength);
   const loadMore = useRef(null);
-  const [interSection, setInterSection] = useState(false);
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(1);
 
-  useEffect(() => {
-    if (search.length === 0) {
-      const callback = (entries) => {
-        setInterSection(entries[0].isIntersecting);
-      };
-
-      const observer = new IntersectionObserver(callback);
-      setTimeout(() => {
-        observer.observe(loadMore.current);
-      }, 1000);
+  const observe = () => {
+    if (who) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          setIndex((index) => index + 1);
+        }
+      });
+      observer.observe(loadMore.current);
     }
-  }, [search]);
+  };
 
   useEffect(() => {
-    if (interSection) {
+    !search &&
+      index !== 1 &&
       axios
         .request({
           method: "GET",
@@ -41,13 +39,15 @@ export default function TvSeries({
         })
         .then(function (response) {
           setTvSeries((tvSeries) => [...tvSeries, ...response.data.results]);
-          setIndex(index + 1);
         })
         .catch(function (error) {
           console.error(error);
         });
-    }
-  }, [interSection]);
+  }, [index]);
+
+  useEffect(() => {
+    observe();
+  }, []);
 
   useEffect(() => {
     setTvSeriesLength(tvSeriesLength);
@@ -55,73 +55,12 @@ export default function TvSeries({
 
   return (
     <div className={after}>
-      <h1 className="text-center">{}</h1>
+      <h1 className="title">Popular Tv Series</h1>
       {length === 0 ? (
-        <div className={imageClassName}>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-          <div className="movie">
-            <Skeleton height={300} enableAnimation="true" />
-            <Skeleton height={25} width={150} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-            <Skeleton height={40} enableAnimation="true" />
-          </div>
-        </div>
+        <div className={imageClassName}></div>
       ) : (
         <div className={imageClassName}>
-          {tvSeries.map((data, index) => {
+          {tvSeries.flat().map((data, index) => {
             return (
               <div className="movie" key={index}>
                 <img
@@ -151,9 +90,9 @@ export default function TvSeries({
               </div>
             );
           })}
-          <div ref={loadMore}></div>
         </div>
       )}
+      <div ref={loadMore}></div>
     </div>
   );
 }

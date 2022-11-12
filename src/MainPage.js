@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import { Slider } from "./Slider";
 import Movie from "./Movie";
 import TvSeries from "./TvSeries";
+import Footer from "./Footer";
 import { MainContext } from "./context";
 import { SkeletonTheme } from "react-loading-skeleton";
 
@@ -60,7 +61,7 @@ function MainPage() {
           infosClassName={"main-movie-infos grid"}
         />
         <div className="text-center">
-          <Link className="btn" to="/movies">
+          <Link className="btn mt-10" to="/movies">
             Load More
           </Link>
         </div>
@@ -72,12 +73,13 @@ function MainPage() {
           />
 
           <div className="text-center">
-            <Link className="btn" to="/tv-series">
+            <Link className="btn mt-10" to="/tv-series">
               Load More
             </Link>
           </div>
         </section>
       </SkeletonTheme>
+      <Footer />
     </MainContext.Provider>
   );
 }

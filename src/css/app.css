@@ -45,13 +45,20 @@
 }
 
 body {
-  background: linear-gradient(90deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
   height: auto;
+  transition: ease-in-out 0.5s;
+  background-color: rgb(139, 139, 139);
+}
+
+.mt-10 {
+  margin-top: 25px;
 }
 
 .btn {
-  padding: 12px 24px;
-  border-radius: 6px;
+  position: relative;
+  top: 30px;
+  padding: 18px 30px;
+  border-radius: 24px;
   background-color: #3e67a5;
   text-decoration: none;
   color: #ffffff;
@@ -104,6 +111,14 @@ body {
   grid-row: 2/span 3;
 }
 
+.title {
+  font-size: 48px;
+  color: #ffffff;
+  width: 100%;
+  max-width: 1100px;
+  margin: 24px auto;
+}
+
 .container {
   max-width: 1400px;
   text-align: center;
@@ -126,7 +141,7 @@ body {
 .movies::after {
   content: "";
   position: absolute;
-  height: 50px;
+  height: 3px;
   right: 0;
   left: 0;
   background-color: orange;
@@ -161,7 +176,7 @@ body {
   height: auto;
   min-height: 150px;
   border-radius: 0 0 24px 24px;
-  background-color: rgb(58, 57, 57);
+  background-color: rgb(235, 156, 156);
   padding: 0 1rem;
 }
 .movie-card .movie-infos * {
@@ -210,9 +225,13 @@ body {
   height: auto;
 }
 .main .sliderTitle {
-  margin: 3rem;
+  height: 100px;
+  margin: 8rem;
   font-size: 2rem;
-  color: white;
+  background: linear-gradient(to top right, #50ff2d 0%, #1e98e9 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 .main::after {
   content: "";
@@ -220,7 +239,7 @@ body {
   height: 50px;
   right: 0;
   left: 0;
-  background-color: orange;
+  background: linear-gradient(to top right, #50ff2d 0%, #1e98e9 100%);
 }
 
 .slider {
@@ -250,4 +269,58 @@ body {
 
 .tv-series {
   margin-top: 125px;
+}
+
+nav {
+  background: linear-gradient(to top right, #50ff2d 0%, #1e98e9 100%);
+}
+nav .container {
+  height: auto;
+}
+
+.categories .grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.categories .grid .btn {
+  top: 0;
+  padding: 12px;
+  line-height: 18px;
+}
+
+.changer {
+  position: absolute;
+  top: 6px;
+  background-color: rgb(151, 151, 151);
+  box-shadow: inset 0 0 20px black;
+  width: 108px;
+  height: 54px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 2rem;
+}
+.changer .light {
+  position: absolute;
+  left: 18px;
+}
+.changer .ball {
+  width: 42px;
+  height: 42px;
+  margin: 3px 0;
+  position: absolute;
+  left: 6px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
+  z-index: 10;
+}
+.changer .dark {
+  position: absolute;
+  right: 18px;
+}
+
+.left {
+  transform: translateX(48px);
 }/*# sourceMappingURL=app.css.map */

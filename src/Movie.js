@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
 import image from "../src/images/no-image.jpg";
 import { endPoint } from "./endPoint";
 import { MainContext, useContext } from "./context";
@@ -10,9 +11,43 @@ export default function Movie({
   imageClassName,
   infosClassName,
   after,
+  who,
 }) {
-  const { movies, search, moviesLength } = useContext(MainContext);
+  const { movies, search, moviesLength, setMovies } = useContext(MainContext);
   const [length, setMoviesLength] = useState(moviesLength);
+  const loadMore = useRef(null);
+  const [index, setIndex] = useState(1);
+
+  const observe = () => {
+    if (who) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          setIndex((index) => index + 1);
+        }
+      });
+      observer.observe(loadMore.current);
+    }
+  };
+
+  useEffect(() => {
+    !search &&
+      index !== 1 &&
+      axios
+        .request({
+          method: "GET",
+          url: `${endPoint.popularMovies}&language=en-US&page=${index}`,
+        })
+        .then(function (response) {
+          setMovies((movies) => [...movies, ...response.data.results]);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+  }, [index]);
+
+  useEffect(() => {
+    observe();
+  }, []);
 
   useEffect(() => {
     setMoviesLength(moviesLength);
@@ -22,7 +57,7 @@ export default function Movie({
     "Loading"
   ) : (
     <div className={after}>
-      <h1 className="text-center">{}</h1>
+      <h1 className="title">Popular Movies</h1>
       {length === 0 ? (
         <div className={imageClassName}>
           <div className="movie">
@@ -120,6 +155,7 @@ export default function Movie({
           })}
         </div>
       )}
+      <div ref={loadMore}></div>
     </div>
   );
 }

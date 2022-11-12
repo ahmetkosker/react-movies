@@ -2,18 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { endPoint } from "./endPoint";
 import TvSeries from "./TvSeries";
-import "./css/app.css";
+import "./Css/app.css";
 import SearchButton from "./SearchButton";
 import Navbar from "./Navbar";
 import { MainContext } from "./context";
-import observer from "./observer";
 function AllTvSeries() {
   const [tvSeries, setTvSeries] = useState([{}]);
   const [loading, setLoading] = useState("false");
   const [search, setSearch] = useState("");
-  const [scrollY, setScrollY] = useState(window.screenY);
   const [tvSeriesLength, setTvSeriesLength] = useState(0);
-  const onChange = (e) => setSearch(e.target.value);
   const data = {
     search,
     setSearch,
@@ -51,6 +48,7 @@ function AllTvSeries() {
         </div>
         <div>
           <TvSeries
+            who={true}
             imageClassName={"container grid movie-card"}
             infosClassName={"movie-infos grid"}
           />

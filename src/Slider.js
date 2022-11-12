@@ -1,4 +1,4 @@
-import "./css/app.css";
+import "./Css/app.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { endPoint } from "./endPoint";
@@ -29,10 +29,10 @@ export function Slider() {
         <div className="sliderItems grid">
           {datas.length === 1 ? (
             <Skeleton
-              enableAnimation="true"
+              enableAnimation="false"
               count={6}
               inline="true"
-              highlightColor="#ffffff"
+              highlightColor="#202124"
               width={300}
               height={500}
             />

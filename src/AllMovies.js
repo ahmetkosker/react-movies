@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { endPoint } from "./endPoint";
 import Movie from "./Movie";
-import "./css/app.css";
+import "./Css/app.css";
 import SearchButton from "./SearchButton";
 import Navbar from "./Navbar";
 import { MainContext } from "./context";
@@ -10,26 +10,16 @@ function AllMovies() {
   const [movies, setMovies] = useState("");
   const [loading, setLoading] = useState("true");
   const [search, setSearch] = useState("");
-  const [scrollY, setScrollY] = useState(window.screenY);
   const [length, setLength] = useState(0);
 
-  const loadMore = useRef();
-  const onChange = (e) => setSearch(e.target.value);
   const data = {
     search,
     setSearch,
     loading,
+    setMovies,
     movies,
     length,
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", function () {
-      window.scrollY > loadMore.current?.offsetTop
-        ? console.log(window.scrollY - loadMore.current?.offsetTop)
-        : console.log();
-    });
-  }, [scrollY]);
 
   useEffect(() => {
     axios
@@ -58,14 +48,11 @@ function AllMovies() {
           <SearchButton />
         </div>
         <div>
-          {loading == "true" ? (
-            "Loading"
-          ) : (
-            <Movie
-              imageClassName={"container grid movie-card"}
-              infosClassName={"movie-infos grid"}
-            />
-          )}
+          <Movie
+            who={true}
+            imageClassName={"container grid movie-card"}
+            infosClassName={"movie-infos grid"}
+          />
         </div>
       </div>
     </MainContext.Provider>

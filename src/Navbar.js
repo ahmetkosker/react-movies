@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
+import ThemeChanger from "./ThemeChanger";
 
 const Navbar = () => {
   return (
@@ -6,8 +8,11 @@ const Navbar = () => {
       <div className="container">
         <div className="grid">
           <div className="categories">
-            <div>
-              <h1>MOVIE LAND</h1>
+            <div className="grid">
+              <ThemeChanger />
+              <Link to="/">
+                <h1>MOVIE LAND</h1>
+              </Link>
             </div>
             <div></div>
           </div>
