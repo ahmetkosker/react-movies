@@ -3,6 +3,7 @@ import axios from "axios";
 import image from "../src/images/no-image.jpg";
 import { endPoint } from "./endPoint";
 import { MainContext, useContext } from "./context";
+import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function TvSeries({
@@ -11,6 +12,7 @@ export default function TvSeries({
   infosClassName,
   after,
   who,
+  title,
 }) {
   const { tvSeries, search, tvSeriesLength, setTvSeries } =
     useContext(MainContext);
@@ -55,7 +57,7 @@ export default function TvSeries({
 
   return (
     <div className={after}>
-      <h1 className="title">Popular Tv Series</h1>
+      <h1 className={title}>Popular Tv Series</h1>
       {length === 0 ? (
         <div className={imageClassName}></div>
       ) : (

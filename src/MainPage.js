@@ -56,6 +56,7 @@ function MainPage() {
         <Navbar />
         <Slider />
         <Movie
+          title={"main-page-title"}
           after={"movies"}
           imageClassName={"container grid main-movie-card"}
           infosClassName={"main-movie-infos grid"}
@@ -67,6 +68,7 @@ function MainPage() {
         </div>
         <section className="tv-series">
           <TvSeries
+            title={"main-page-title"}
             after={"movies"}
             imageClassName={"container grid main-movie-card"}
             infosClassName={"main-movie-infos grid"}

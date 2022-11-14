@@ -48,6 +48,7 @@ function AllTvSeries() {
         </div>
         <div>
           <TvSeries
+            title={"sub-title"}
             who={true}
             imageClassName={"container grid movie-card"}
             infosClassName={"movie-infos grid"}

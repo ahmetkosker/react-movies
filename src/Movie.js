@@ -12,6 +12,7 @@ export default function Movie({
   infosClassName,
   after,
   who,
+  title,
 }) {
   const { movies, search, moviesLength, setMovies } = useContext(MainContext);
   const [length, setMoviesLength] = useState(moviesLength);
@@ -57,7 +58,7 @@ export default function Movie({
     "Loading"
   ) : (
     <div className={after}>
-      <h1 className="title">Popular Movies</h1>
+      <h1 className={title}>Popular Movies</h1>
       {length === 0 ? (
         <div className={imageClassName}>
           <div className="movie">

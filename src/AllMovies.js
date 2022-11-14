@@ -7,7 +7,7 @@ import SearchButton from "./SearchButton";
 import Navbar from "./Navbar";
 import { MainContext } from "./context";
 function AllMovies() {
-  const [movies, setMovies] = useState("");
+  const [movies, setMovies] = useState([{}]);
   const [loading, setLoading] = useState("true");
   const [search, setSearch] = useState("");
   const [length, setLength] = useState(0);
@@ -49,6 +49,7 @@ function AllMovies() {
         </div>
         <div>
           <Movie
+            title={"sub-title"}
             who={true}
             imageClassName={"container grid movie-card"}
             infosClassName={"movie-infos grid"}
