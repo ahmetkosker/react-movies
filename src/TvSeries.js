@@ -3,8 +3,6 @@ import axios from "axios";
 import image from "../src/images/no-image.jpg";
 import { endPoint } from "./endPoint";
 import { MainContext, useContext } from "./context";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 export default function TvSeries({
   loading,
@@ -67,7 +65,7 @@ export default function TvSeries({
               <div className="movie" key={index}>
                 <img
                   src={
-                    `${endPoint.imageTMDB}${data.poster_path}` ==
+                    `${endPoint.imageTMDB}${data.poster_path}` ===
                     `https://image.tmdb.org/t/p/originalnull`
                       ? image
                       : `${endPoint.imageTMDB}${data.poster_path}`

@@ -40,7 +40,10 @@ export function Slider() {
             datas.map((data, index) => {
               return (
                 <div className="sliderItem" key={index}>
-                  <img src={`${endPoint.imageTMDB}${data.poster_path}`}></img>
+                  <img
+                    src={`${endPoint.imageTMDB}${data.poster_path}`}
+                    alt=""
+                  ></img>
                 </div>
               );
             })

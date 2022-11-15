@@ -4,10 +4,6 @@ import { MdNightlight } from "react-icons/md";
 import { IconContext } from "react-icons";
 
 export default function ThemeChanger() {
-  function myFunction() {
-    document.body.style.background =
-      "linear-gradient(90deg, rgba(212,211,222,1) 0%, rgba(186,215,209,1) 26%, rgba(0,255,44,1) 100%)";
-  }
   const [darkTheme, setThemeDark] = useState(true);
   const change = () => {
     setThemeDark(!darkTheme);

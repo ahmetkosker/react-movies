@@ -6,6 +6,7 @@ import MainSearchBar from "./MainSearchBar";
 export function MainSearch() {
   const [mainSearch, setMainSearch] = useState("");
   const [data, setData] = useState([{}]);
+
   useEffect(() => {
     axios
       .request({

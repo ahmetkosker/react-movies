@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ThemeChanger from "./ThemeChanger";
 import { MainSearch } from "./MainSearch";

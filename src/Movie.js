@@ -54,7 +54,7 @@ export default function Movie({
     setMoviesLength(moviesLength);
   }, [moviesLength]);
 
-  return loading == "true" ? (
+  return loading === "true" ? (
     "Loading"
   ) : (
     <div className={after}>
@@ -129,7 +129,7 @@ export default function Movie({
               <div className="movie" key={index}>
                 <img
                   src={
-                    `${endPoint.imageTMDB}${movie.poster_path}` ==
+                    `${endPoint.imageTMDB}${movie.poster_path}` ===
                     `https://image.tmdb.org/t/p/originalnull`
                       ? image
                       : `${endPoint.imageTMDB}${movie.poster_path}`
