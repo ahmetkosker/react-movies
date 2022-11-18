@@ -8,17 +8,18 @@ export function MainSearch() {
   const [data, setData] = useState([{}]);
 
   useEffect(() => {
-    axios
-      .request({
-        method: "GET",
-        url: `${endPoint.multiSearch}&language=en-US&page=1&query=${mainSearch}`,
-      })
-      .then(function (response) {
-        setData(response.data.results.splice(0, 5));
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    mainSearch.length > 0 &&
+      axios
+        .request({
+          method: "GET",
+          url: `${endPoint.multiSearch}&language=en-US&page=1&query=${mainSearch}`,
+        })
+        .then(function (response) {
+          setData(response.data.results.splice(0, 5));
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
   }, [mainSearch]);
 
   return (

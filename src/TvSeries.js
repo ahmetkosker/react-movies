@@ -3,6 +3,7 @@ import axios from "axios";
 import image from "../src/images/no-image.jpg";
 import { endPoint } from "./endPoint";
 import { MainContext, useContext } from "./context";
+import { Link } from "react-router-dom";
 
 export default function TvSeries({
   loading,
@@ -62,32 +63,34 @@ export default function TvSeries({
         <div className={imageClassName}>
           {tvSeries.flat().map((data, index) => {
             return (
-              <div className="movie" key={index}>
-                <img
-                  src={
-                    `${endPoint.imageTMDB}${data.poster_path}` ===
-                    `https://image.tmdb.org/t/p/originalnull`
-                      ? image
-                      : `${endPoint.imageTMDB}${data.poster_path}`
-                  }
-                  alt="There is not a photo."
-                />
-                <div className={infosClassName}>
-                  <div className="justify-start flex trev-color">
-                    <h4 className="ligbol">SERIES</h4>
-                    <h5 className="bold">IMDB : {data.vote_average}</h5>
-                  </div>
-                  <div className="movie-title justfy-start grid-row">
-                    <h4>{data.original_name}</h4>
-                  </div>
-                  <div className="justfy-end"></div>
-                  <div>
-                    <h5 className="trev-color">
-                      Release Date : {data.first_air_date}
-                    </h5>
+              <Link to={{ pathname: `tvSeries/${data.id}` }}>
+                <div className="movie" key={index}>
+                  <img
+                    src={
+                      `${endPoint.imageTMDB}${data.poster_path}` ===
+                      `https://image.tmdb.org/t/p/originalnull`
+                        ? image
+                        : `${endPoint.imageTMDB}${data.poster_path}`
+                    }
+                    alt="There is not a photo."
+                  />
+                  <div className={infosClassName}>
+                    <div className="justify-start flex trev-color">
+                      <h4 className="ligbol">SERIES</h4>
+                      <h5 className="bold">IMDB : {data.vote_average}</h5>
+                    </div>
+                    <div className="movie-title justfy-start grid-row">
+                      <h4>{data.original_name}</h4>
+                    </div>
+                    <div className="justfy-end"></div>
+                    <div>
+                      <h5 className="trev-color">
+                        Release Date : {data.first_air_date}
+                      </h5>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

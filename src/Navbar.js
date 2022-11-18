@@ -14,14 +14,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav ref={nav}>
+    <nav className="navo" ref={nav}>
       <div className="container">
         <div className="grid">
           <div className="categories">
             <div className="grid">
               <MainSearch />
               <Link to="/">
-                <h1 className="main-title">MOVIE LAND</h1>
+                <h1 className="main-title blue">MOVIE LAND</h1>
               </Link>
               <ThemeChanger />
             </div>

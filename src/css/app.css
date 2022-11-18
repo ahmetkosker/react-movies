@@ -91,6 +91,10 @@ a::after {
   color: #c5c5c5;
 }
 
+.justfiy-start {
+  justify-self: flex-start;
+}
+
 .text-center {
   text-align: center;
   width: 100%;
@@ -257,8 +261,20 @@ a::after {
   color: rgb(243, 218, 164);
 }
 
-.main-title {
+.navo {
+  text-align: center;
+}
+
+.red {
   background: linear-gradient(90deg, rgb(255, 205, 113) 0%, orange 25%, orangered 40%, #333 75%, #000 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  text-decoration: none;
+}
+
+.blue {
+  background: linear-gradient(90deg, rgb(244, 253, 253) 0%, rgb(78, 234, 255) 25%, rgb(5, 184, 255) 40%, rgb(0, 26, 255) 75%, #000 100%);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -404,4 +420,19 @@ nav .container {
 .mainSearchBar .bar {
   background-color: #2980b9;
   border-bottom: 1px solid red;
+}
+
+.details-section .container {
+  max-width: 1920px;
+}
+.details-section .container .details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.details-section .container .details .detail-video {
+  height: 720px;
+}
+.details-section .container .details .other-details {
+  width: 100%;
 }/*# sourceMappingURL=app.css.map */

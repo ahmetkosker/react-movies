@@ -8,7 +8,10 @@ export default function ThemeChanger() {
   const change = () => {
     setThemeDark(!darkTheme);
     const ball = document.querySelector(".ball");
+    const title = document.querySelector(".main-title");
     if (darkTheme) {
+      title.classList.remove("blue");
+      title.classList.add("red");
       document.getElementsByClassName("sliderTitle")[0]
         ? (document.getElementsByClassName("sliderTitle")[0].style.color =
             "#f5c518")
@@ -32,6 +35,8 @@ export default function ThemeChanger() {
         "linear-gradient(90deg, orangered 0%, rgb(104, 104, 104) 5%, #333 20%, #000 50%, #333 80%, rgb(104, 104, 104) 95%, orangered 100%)";
       ball.classList.add("left");
     } else {
+      title.classList.remove("red");
+      title.classList.add("blue");
       document.getElementsByClassName("sliderTitle")[0]
         ? (document.getElementsByClassName("sliderTitle")[0].style.color =
             "#333")

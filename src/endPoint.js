@@ -10,5 +10,6 @@ export const endPoint = {
   popularTvSeries: `${baseUrl}tv/popular?api_key=${apiKey}&language=en-US&page=1`,
   upcoming: `${baseUrl}upcoming?api_key=${apiKey}`,
   multiSearch: `${baseUrl}search/multi?api_key=${apiKey}`,
+  apiKey,
   imageTMDB,
 };

@@ -92,6 +92,10 @@ a {
   color: $trev-color;
 }
 
+.justfiy-start {
+  justify-self: flex-start;
+}
+
 .text-center {
   text-align: center;
   width: 100%;
@@ -259,13 +263,31 @@ a {
   }
 }
 
-.main-title {
+.navo {
+  text-align: center;
+}
+
+.red {
   background: linear-gradient(
     90deg,
     rgb(255, 205, 113) 0%,
     orange 25%,
     orangered 40%,
     #333 75%,
+    #000 100%
+  );
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+}
+
+.blue {
+  background: linear-gradient(
+    90deg,
+    rgb(244, 253, 253) 0%,
+    rgb(78, 234, 255) 25%,
+    rgb(5, 184, 255) 40%,
+    rgb(0, 26, 255) 75%,
     #000 100%
   );
   background-clip: text;
@@ -410,5 +432,22 @@ nav {
   .bar {
     background-color: #2980b9;
     border-bottom: 1px solid red;
+  }
+}
+
+.details-section {
+  .container {
+    max-width: 1920px;
+    .details {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      .detail-video {
+        height: 720px;
+      }
+      .other-details {
+        width: 100%;
+      }
+    }
   }
 }

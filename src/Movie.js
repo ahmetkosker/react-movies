@@ -3,6 +3,7 @@ import axios from "axios";
 import image from "../src/images/no-image.jpg";
 import { endPoint } from "./endPoint";
 import { MainContext, useContext } from "./context";
+import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -126,32 +127,35 @@ export default function Movie({
         <div className={imageClassName}>
           {movies.map((movie, index) => {
             return (
-              <div className="movie" key={index}>
-                <img
-                  src={
-                    `${endPoint.imageTMDB}${movie.poster_path}` ===
-                    `https://image.tmdb.org/t/p/originalnull`
-                      ? image
-                      : `${endPoint.imageTMDB}${movie.poster_path}`
-                  }
-                  alt="There is not a photo."
-                />
-                <div className={infosClassName}>
-                  <div className="justify-start flex trev-color">
-                    <h4 className="ligbol">MOVIE</h4>
-                    <h5 className="bold">IMDB : {movie.vote_average}</h5>
-                  </div>
-                  <div className="movie-title justfy-start grid-row">
-                    <h4>{movie.original_title}</h4>
-                  </div>
-                  <div className="justfy-end"></div>
-                  <div>
-                    <h5 className="trev-color">
-                      Release Date : {movie.release_date}
-                    </h5>
+              <Link to={{ pathname: `movies/${movie.id}` }}>
+                <div className="movie" key={index}>
+                  <img
+                    src={
+                      `${endPoint.imageTMDB}${movie.poster_path}` ===
+                      `https://image.tmdb.org/t/p/originalnull`
+                        ? image
+                        : `${endPoint.imageTMDB}${movie.poster_path}`
+                    }
+                    alt="There is not a photo."
+                  />
+
+                  <div className={infosClassName}>
+                    <div className="justify-start flex trev-color">
+                      <h4 className="ligbol">MOVIE</h4>
+                      <h5 className="bold">IMDB : {movie.vote_average}</h5>
+                    </div>
+                    <div className="movie-title justfy-start grid-row">
+                      <h4>{movie.original_title}</h4>
+                    </div>
+                    <div className="justfy-end"></div>
+                    <div>
+                      <h5 className="trev-color">
+                        Release Date : {movie.release_date}
+                      </h5>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
