@@ -4,6 +4,7 @@ import axios from "axios";
 import { endPoint } from "./endPoint";
 import Detail from "./Detail";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function MovieDetail() {
   const [movieDetail, setMovieDetail] = useState({});
@@ -26,7 +27,7 @@ export default function MovieDetail() {
   return (
     <div>
       <Navbar />
-      <Detail data={movieDetail} dataType={"movie"} />
+      <Detail data={movieDetail} dataType={"movie"} />,
     </div>
   );
 }

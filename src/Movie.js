@@ -127,7 +127,7 @@ export default function Movie({
         <div className={imageClassName}>
           {movies.map((movie, index) => {
             return (
-              <Link to={{ pathname: `movies/${movie.id}` }}>
+              <Link to={{ pathname: `/movies/${movie.id}` }}>
                 <div className="movie" key={index}>
                   <img
                     src={

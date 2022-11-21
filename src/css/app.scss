@@ -32,7 +32,7 @@ $movie-name-color: rgb(243, 218, 164);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.5px;
   line-height: 4rem;
 }
 
@@ -407,6 +407,10 @@ nav {
   }
 }
 
+.orangered {
+  color: orangered;
+}
+
 .left {
   transform: translateX(54px);
 }
@@ -438,15 +442,77 @@ nav {
 .details-section {
   .container {
     max-width: 1920px;
+    margin-top: 25px;
     .details {
-      width: 100%;
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 5fr 3fr;
+      column-gap: 25px;
       .detail-video {
-        height: 720px;
+        height: 1000px;
       }
       .other-details {
-        width: 100%;
+        width: 550px;
+        height: auto;
+        display: grid;
+        grid-template-rows: auto repeat(4, 150px);
+        justify-content: flex-start;
+        .detail-top {
+          box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.5);
+          // border-radius: 100px;
+          padding: 15px 35px;
+          transition: all 0.3s;
+          &:hover {
+            opacity: 0.75;
+          }
+          .detail-title {
+            width: 100%;
+            font-size: 18px;
+            text-align: center;
+            color: $white-color;
+            text-shadow: 1px 4px 4px black;
+          }
+          .title-items {
+            z-index: 999;
+            width: 400px;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            justify-items: center;
+            .title-item {
+              color: $white-color;
+              width: auto;
+              min-width: 150px;
+              border-radius: 100px;
+              background-color: #6f07b4;
+              padding: 0;
+            }
+            .genre {
+              background-color: #5db5dd !important;
+            }
+            .star {
+              color: #ffffff;
+              background-color: rgb(255, 185, 80);
+              display: flex;
+              justify-content: space-evenly;
+            }
+          }
+        }
+        .other-details-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          .overview {
+            * {
+              font-size: 12px;
+              line-height: 18px;
+              letter-spacing: 0.5px;
+              text-align: start;
+            }
+          }
+        }
       }
     }
   }

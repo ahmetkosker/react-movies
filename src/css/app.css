@@ -40,7 +40,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.5px;
   line-height: 4rem;
 }
 
@@ -394,6 +394,10 @@ nav .container {
   color: orangered;
 }
 
+.orangered {
+  color: orangered;
+}
+
 .left {
   transform: translateX(54px);
 }
@@ -424,15 +428,75 @@ nav .container {
 
 .details-section .container {
   max-width: 1920px;
+  margin-top: 25px;
 }
 .details-section .container .details {
-  width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 5fr 3fr;
+  -moz-column-gap: 25px;
+       column-gap: 25px;
 }
 .details-section .container .details .detail-video {
-  height: 720px;
+  height: 1000px;
 }
 .details-section .container .details .other-details {
+  width: 550px;
+  height: auto;
+  display: grid;
+  grid-template-rows: auto repeat(4, 150px);
+  justify-content: flex-start;
+}
+.details-section .container .details .other-details .detail-top {
+  box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.5);
+  padding: 15px 35px;
+  transition: all 0.3s;
+}
+.details-section .container .details .other-details .detail-top:hover {
+  opacity: 0.75;
+}
+.details-section .container .details .other-details .detail-top .detail-title {
   width: 100%;
+  font-size: 18px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 1px 4px 4px black;
+}
+.details-section .container .details .other-details .detail-top .title-items {
+  z-index: 999;
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  justify-items: center;
+}
+.details-section .container .details .other-details .detail-top .title-items .title-item {
+  color: #ffffff;
+  width: auto;
+  min-width: 150px;
+  border-radius: 100px;
+  background-color: #6f07b4;
+  padding: 0;
+}
+.details-section .container .details .other-details .detail-top .title-items .genre {
+  background-color: #5db5dd !important;
+}
+.details-section .container .details .other-details .detail-top .title-items .star {
+  color: #ffffff;
+  background-color: rgb(255, 185, 80);
+  display: flex;
+  justify-content: space-evenly;
+}
+.details-section .container .details .other-details .other-details-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.details-section .container .details .other-details .other-details-item .overview * {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: start;
 }/*# sourceMappingURL=app.css.map */

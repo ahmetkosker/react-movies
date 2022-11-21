@@ -63,7 +63,7 @@ export default function TvSeries({
         <div className={imageClassName}>
           {tvSeries.flat().map((data, index) => {
             return (
-              <Link to={{ pathname: `tvSeries/${data.id}` }}>
+              <Link to={{ pathname: `/tvSeries/${data.id}` }}>
                 <div className="movie" key={index}>
                   <img
                     src={
